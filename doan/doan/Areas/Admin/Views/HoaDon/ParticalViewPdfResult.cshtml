@@ -1,0 +1,157 @@
+﻿@model List<doan.Models.InvoiceExport>
+
+
+@{
+    var ie = Model[0];
+}
+
+
+<div>
+    <div>
+        <div>
+            <div style="display:flex; flex-direction:column; justify-content:center; align-items:center">
+                <h3 style="font-weight:700;">Bloomsy</h3>
+                <p>Đường Hàn Thuyên, KP6, Linh Trung, Thủ Đức, TP.HCM</p>
+                <p>(+84) 55 079 079</p>
+                <h3 style="font-weight:700;">HÓA ĐƠN BÁN HÀNG</h3>
+                <div style="display:flex; justify-content:center; align-items:center; justify-content:space-between;">
+                    <p style="margin-right:40px;"> Ngày: @ie.CreatedDate</p>
+                    <p> Số: &nbsp; <span style="font-weight:700;">#@ie.IDHoaDon</span></p>
+                </div>
+            </div>
+        </div>
+        <div style="display:flex; justify-content:center; align-items:center;">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; padding:10px 40px; color: #ABABAB;">ID</th>
+                        <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; padding:10px 40px; color: #ABABAB;">Tên Sản Phẩm</th>
+                        <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; padding: 40px; color: #ABABAB;">Size</th>
+                        <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; padding: 40px; color: #ABABAB;">Đơn Giá</th>
+                        <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; padding: 40px; color: #ABABAB;">Số Lượng</th>
+                        <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; padding: 40px; color: #ABABAB;">Thành Tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row" style="font-weight: 500; font-size: 15px; line-height: 18px; padding:10px 40px;">
+                                <p>#@item.ID</p>
+                            </th>
+                            <td style="font-weight: 500; font-size: 15px; line-height: 18px; padding:10px 40px;">
+                                <div style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
+                                    @item.TenSP
+
+                                    @*@if (item.Topping != "")
+                                    {
+                                        <span style="margin:0; padding:0;">
+                                            (@item.Topping)
+                                        </span>
+                                    }*@
+                                </div>
+                            </td>
+                            @*<td style="font-weight: 500; font-size: 15px; line-height: 18px; padding:10px 40px;">
+                                @item.Size
+                            </td>*@
+                            <td style="font-weight: 500; font-size: 15px; line-height: 18px; padding:10px 40px;">
+                                @{
+                                    var c = item.Gia / 1000;
+                                }
+                                @c.000 đ
+                            </td>
+                            <td style="font-weight: 500; font-size: 15px; line-height: 18px; padding:10px 40px;">
+                                @item.SoLuong
+                            </td>
+                            <td style="font-weight: 500; font-size: 15px; line-height: 18px; padding:10px 40px;">
+                                @{
+                                    var d = item.Gia / 1000;
+                                }
+                                @d.000 đ
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div style="margin-left:700px; margin-top: 40px;">
+        <div style="display:flex; margin-right:80px; justify-content:end;">
+            @{
+                var p = ie.TongTien;
+                if (ie.isOnline == true)
+                {
+                    if (ie.TienKM > 0)
+                    {
+                        p = p + ie.TienKM - 30000;
+                    }
+                    else
+                    {
+                        p = p - 30000;
+                    }
+                }
+                else
+                {
+                    if (ie.TienKM > 0)
+                    {
+                        p = p + ie.TienKM;
+                    }
+                    else
+                    {
+                    }
+                }
+                p = p / 1000;
+                <p>
+                    Tạm Tính: @p.000đ
+                </p>
+            }
+
+        </div>
+        @if (ie.TenKM != null && ie.TienKM != 0)
+        {
+            <div style="display:flex; margin-right:80px; justify-content:end; align-items:end;">
+                @{
+                    var b = ie.TienKM / 1000;
+
+                    <p>@ie.TenKM <span>: @b.000 đ</span> </p>
+                }
+            </div>
+        }
+        @if (ie.isOnline != null && ie.isOnline == true)
+        {
+            <div style="display: flex; margin-right: 80px; justify-content: end; align-items: end;">
+                <p>Phí Vận Chuyển: 30.000 đ</p>
+            </div>
+        }
+
+        <div style="display: flex;margin-right: 80px; justify-content: end; align-items: end;">
+            @{
+                var a = ie.TongTien / 1000;
+                <p style="font-weight:700;">Tổng Tiền Thanh Toán: @a.000 đ</p>
+            }
+        </div>
+    </div>
+    <div class="footer">
+        <div class="terms" style="text-align: center;">
+            <p style="font-weight:700;">Xin Chân Thành Cảm Ơn Và Hẹn Gặp Lại.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    /*.wrapper {
+        background: var(--white);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .invoice_wrapper {
+        border: 3px solid var(--primary);
+        width: 700px;
+        max-width: 100%;
+    }*/
+</style>

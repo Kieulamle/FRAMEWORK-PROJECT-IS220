@@ -1,0 +1,196 @@
+D:\File cài đặt\doan\doan\bin\doan.dll.config
+D:\File cài đặt\doan\doan\bin\doan.dll
+D:\File cài đặt\doan\doan\bin\doan.pdb
+D:\File cài đặt\doan\doan\bin\roslyn\csc.exe
+D:\File cài đặt\doan\doan\bin\roslyn\csc.exe.config
+D:\File cài đặt\doan\doan\bin\roslyn\csc.rsp
+D:\File cài đặt\doan\doan\bin\roslyn\csi.exe
+D:\File cài đặt\doan\doan\bin\roslyn\csi.exe.config
+D:\File cài đặt\doan\doan\bin\roslyn\csi.rsp
+D:\File cài đặt\doan\doan\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\File cài đặt\doan\doan\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\File cài đặt\doan\doan\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\File cài đặt\doan\doan\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\File cài đặt\doan\doan\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\File cài đặt\doan\doan\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\File cài đặt\doan\doan\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\File cài đặt\doan\doan\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\File cài đặt\doan\doan\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\File cài đặt\doan\doan\bin\roslyn\Microsoft.Managed.Core.CurrentVersions.targets
+D:\File cài đặt\doan\doan\bin\roslyn\Microsoft.Managed.Core.targets
+D:\File cài đặt\doan\doan\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\File cài đặt\doan\doan\bin\roslyn\System.Buffers.dll
+D:\File cài đặt\doan\doan\bin\roslyn\System.Collections.Immutable.dll
+D:\File cài đặt\doan\doan\bin\roslyn\System.Memory.dll
+D:\File cài đặt\doan\doan\bin\roslyn\System.Numerics.Vectors.dll
+D:\File cài đặt\doan\doan\bin\roslyn\System.Reflection.Metadata.dll
+D:\File cài đặt\doan\doan\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+D:\File cài đặt\doan\doan\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\File cài đặt\doan\doan\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\File cài đặt\doan\doan\bin\roslyn\vbc.exe
+D:\File cài đặt\doan\doan\bin\roslyn\vbc.exe.config
+D:\File cài đặt\doan\doan\bin\roslyn\vbc.rsp
+D:\File cài đặt\doan\doan\bin\roslyn\VBCSCompiler.exe
+D:\File cài đặt\doan\doan\bin\roslyn\VBCSCompiler.exe.config
+D:\File cài đặt\doan\doan\bin\Antlr3.Runtime.dll
+D:\File cài đặt\doan\doan\bin\CKFinder.dll
+D:\File cài đặt\doan\doan\bin\EntityFramework.dll
+D:\File cài đặt\doan\doan\bin\EntityFramework.SqlServer.dll
+D:\File cài đặt\doan\doan\bin\Facebook.dll
+D:\File cài đặt\doan\doan\bin\Microsoft.Bcl.AsyncInterfaces.dll
+D:\File cài đặt\doan\doan\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\File cài đặt\doan\doan\bin\Microsoft.Owin.dll
+D:\File cài đặt\doan\doan\bin\Microsoft.Owin.Security.dll
+D:\File cài đặt\doan\doan\bin\Microsoft.Web.Infrastructure.dll
+D:\File cài đặt\doan\doan\bin\Model.dll
+D:\File cài đặt\doan\doan\bin\Newtonsoft.Json.dll
+D:\File cài đặt\doan\doan\bin\Owin.dll
+D:\File cài đặt\doan\doan\bin\PagedList.dll
+D:\File cài đặt\doan\doan\bin\PagedList.Mvc.dll
+D:\File cài đặt\doan\doan\bin\Select.HtmlToPdf.dll
+D:\File cài đặt\doan\doan\bin\System.Buffers.dll
+D:\File cài đặt\doan\doan\bin\System.Diagnostics.DiagnosticSource.dll
+D:\File cài đặt\doan\doan\bin\System.Memory.dll
+D:\File cài đặt\doan\doan\bin\System.Numerics.Vectors.dll
+D:\File cài đặt\doan\doan\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\File cài đặt\doan\doan\bin\System.Threading.Tasks.Extensions.dll
+D:\File cài đặt\doan\doan\bin\System.Web.Helpers.dll
+D:\File cài đặt\doan\doan\bin\System.Web.Mvc.dll
+D:\File cài đặt\doan\doan\bin\System.Web.Optimization.dll
+D:\File cài đặt\doan\doan\bin\System.Web.Razor.dll
+D:\File cài đặt\doan\doan\bin\System.Web.WebPages.Deployment.dll
+D:\File cài đặt\doan\doan\bin\System.Web.WebPages.dll
+D:\File cài đặt\doan\doan\bin\System.Web.WebPages.Razor.dll
+D:\File cài đặt\doan\doan\bin\WebGrease.dll
+D:\File cài đặt\doan\doan\bin\Model.pdb
+D:\File cài đặt\doan\doan\bin\Model.dll.config
+D:\File cài đặt\doan\doan\bin\CKFinder.pdb
+D:\File cài đặt\doan\doan\bin\EntityFramework.xml
+D:\File cài đặt\doan\doan\bin\EntityFramework.SqlServer.xml
+D:\File cài đặt\doan\doan\bin\Facebook.xml
+D:\File cài đặt\doan\doan\bin\Microsoft.Bcl.AsyncInterfaces.xml
+D:\File cài đặt\doan\doan\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\File cài đặt\doan\doan\bin\Microsoft.Owin.xml
+D:\File cài đặt\doan\doan\bin\Microsoft.Owin.Security.xml
+D:\File cài đặt\doan\doan\bin\PagedList.xml
+D:\File cài đặt\doan\doan\bin\PagedList.Mvc.xml
+D:\File cài đặt\doan\doan\bin\Select.HtmlToPdf.xml
+D:\File cài đặt\doan\doan\bin\System.Buffers.xml
+D:\File cài đặt\doan\doan\bin\System.Diagnostics.DiagnosticSource.xml
+D:\File cài đặt\doan\doan\bin\System.Memory.xml
+D:\File cài đặt\doan\doan\bin\System.Numerics.Vectors.xml
+D:\File cài đặt\doan\doan\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\File cài đặt\doan\doan\bin\System.Threading.Tasks.Extensions.xml
+D:\File cài đặt\doan\doan\bin\System.Web.Helpers.xml
+D:\File cài đặt\doan\doan\bin\System.Web.Mvc.xml
+D:\File cài đặt\doan\doan\bin\System.Web.Optimization.xml
+D:\File cài đặt\doan\doan\bin\System.Web.Razor.xml
+D:\File cài đặt\doan\doan\bin\System.Web.WebPages.xml
+D:\File cài đặt\doan\doan\bin\System.Web.WebPages.Deployment.xml
+D:\File cài đặt\doan\doan\bin\System.Web.WebPages.Razor.xml
+D:\File cài đặt\doan\doan\bin\Newtonsoft.Json.xml
+D:\File cài đặt\doan\doan\bin\Antlr3.Runtime.pdb
+D:\File cài đặt\doan\doan\bin\Select.Html.dep
+D:\File cài đặt\doan\doan\obj\Debug\doan.csproj.AssemblyReference.cache
+D:\File cài đặt\doan\doan\obj\Debug\doan.csproj.CoreCompileInputs.cache
+D:\File cài đặt\doan\doan\obj\Debug\doan.csproj.CopyComplete
+D:\File cài đặt\doan\doan\obj\Debug\doan.dll
+D:\File cài đặt\doan\doan\obj\Debug\doan.pdb
+C:\Users\PC\Downloads\doan\doan\bin\doan.dll.config
+C:\Users\PC\Downloads\doan\doan\bin\doan.dll
+C:\Users\PC\Downloads\doan\doan\bin\doan.pdb
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\csc.exe
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\csc.exe.config
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\csc.rsp
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\csi.exe
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\csi.exe.config
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\csi.rsp
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\Microsoft.Managed.Core.CurrentVersions.targets
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\System.Buffers.dll
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\System.Memory.dll
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\vbc.exe
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\vbc.exe.config
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\vbc.rsp
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\VBCSCompiler.exe
+C:\Users\PC\Downloads\doan\doan\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\PC\Downloads\doan\doan\bin\Antlr3.Runtime.dll
+C:\Users\PC\Downloads\doan\doan\bin\CKFinder.dll
+C:\Users\PC\Downloads\doan\doan\bin\EntityFramework.dll
+C:\Users\PC\Downloads\doan\doan\bin\EntityFramework.SqlServer.dll
+C:\Users\PC\Downloads\doan\doan\bin\Facebook.dll
+C:\Users\PC\Downloads\doan\doan\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\PC\Downloads\doan\doan\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\PC\Downloads\doan\doan\bin\Microsoft.Owin.dll
+C:\Users\PC\Downloads\doan\doan\bin\Microsoft.Owin.Security.dll
+C:\Users\PC\Downloads\doan\doan\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\PC\Downloads\doan\doan\bin\Model.dll
+C:\Users\PC\Downloads\doan\doan\bin\Newtonsoft.Json.dll
+C:\Users\PC\Downloads\doan\doan\bin\Owin.dll
+C:\Users\PC\Downloads\doan\doan\bin\PagedList.dll
+C:\Users\PC\Downloads\doan\doan\bin\PagedList.Mvc.dll
+C:\Users\PC\Downloads\doan\doan\bin\Select.HtmlToPdf.dll
+C:\Users\PC\Downloads\doan\doan\bin\System.Buffers.dll
+C:\Users\PC\Downloads\doan\doan\bin\System.Diagnostics.DiagnosticSource.dll
+C:\Users\PC\Downloads\doan\doan\bin\System.Memory.dll
+C:\Users\PC\Downloads\doan\doan\bin\System.Numerics.Vectors.dll
+C:\Users\PC\Downloads\doan\doan\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\PC\Downloads\doan\doan\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\PC\Downloads\doan\doan\bin\System.Web.Helpers.dll
+C:\Users\PC\Downloads\doan\doan\bin\System.Web.Mvc.dll
+C:\Users\PC\Downloads\doan\doan\bin\System.Web.Optimization.dll
+C:\Users\PC\Downloads\doan\doan\bin\System.Web.Razor.dll
+C:\Users\PC\Downloads\doan\doan\bin\System.Web.WebPages.Deployment.dll
+C:\Users\PC\Downloads\doan\doan\bin\System.Web.WebPages.dll
+C:\Users\PC\Downloads\doan\doan\bin\System.Web.WebPages.Razor.dll
+C:\Users\PC\Downloads\doan\doan\bin\WebGrease.dll
+C:\Users\PC\Downloads\doan\doan\bin\Model.pdb
+C:\Users\PC\Downloads\doan\doan\bin\Model.dll.config
+C:\Users\PC\Downloads\doan\doan\bin\CKFinder.pdb
+C:\Users\PC\Downloads\doan\doan\bin\EntityFramework.xml
+C:\Users\PC\Downloads\doan\doan\bin\EntityFramework.SqlServer.xml
+C:\Users\PC\Downloads\doan\doan\bin\Facebook.xml
+C:\Users\PC\Downloads\doan\doan\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\PC\Downloads\doan\doan\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\PC\Downloads\doan\doan\bin\Microsoft.Owin.xml
+C:\Users\PC\Downloads\doan\doan\bin\Microsoft.Owin.Security.xml
+C:\Users\PC\Downloads\doan\doan\bin\PagedList.xml
+C:\Users\PC\Downloads\doan\doan\bin\PagedList.Mvc.xml
+C:\Users\PC\Downloads\doan\doan\bin\Select.HtmlToPdf.xml
+C:\Users\PC\Downloads\doan\doan\bin\System.Buffers.xml
+C:\Users\PC\Downloads\doan\doan\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\PC\Downloads\doan\doan\bin\System.Memory.xml
+C:\Users\PC\Downloads\doan\doan\bin\System.Numerics.Vectors.xml
+C:\Users\PC\Downloads\doan\doan\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\PC\Downloads\doan\doan\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\PC\Downloads\doan\doan\bin\System.Web.Helpers.xml
+C:\Users\PC\Downloads\doan\doan\bin\System.Web.Mvc.xml
+C:\Users\PC\Downloads\doan\doan\bin\System.Web.Optimization.xml
+C:\Users\PC\Downloads\doan\doan\bin\System.Web.Razor.xml
+C:\Users\PC\Downloads\doan\doan\bin\System.Web.WebPages.xml
+C:\Users\PC\Downloads\doan\doan\bin\System.Web.WebPages.Deployment.xml
+C:\Users\PC\Downloads\doan\doan\bin\System.Web.WebPages.Razor.xml
+C:\Users\PC\Downloads\doan\doan\bin\Newtonsoft.Json.xml
+C:\Users\PC\Downloads\doan\doan\bin\Antlr3.Runtime.pdb
+C:\Users\PC\Downloads\doan\doan\bin\Select.Html.dep
+C:\Users\PC\Downloads\doan\doan\obj\Debug\doan.csproj.AssemblyReference.cache
+C:\Users\PC\Downloads\doan\doan\obj\Debug\doan.csproj.CoreCompileInputs.cache
+C:\Users\PC\Downloads\doan\doan\obj\Debug\doan.csproj.CopyComplete
+C:\Users\PC\Downloads\doan\doan\obj\Debug\doan.dll
+C:\Users\PC\Downloads\doan\doan\obj\Debug\doan.pdb

@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+@model Model.EF.Blog
+
+
+<!-- about breadcrumb -->
+<section class="w3l-about-breadcrumb position-relative text-center">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container py-lg-5 py-3">
+            <h2 class="title text-morii">Blog</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="Index">Trang Chủ</a></li>
+                <li class="active"><span class="fa fa-angle-double-right mx-2" aria-hidden="true"></span> Blog </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+
+<style>
+    .blog-item {
+        color: #E7596D !important;
+    }
+
+    .cauchuyen {
+        padding: 0;
+    }
+
+    p {
+        color: #787e92;
+        font-size: 18px;
+        line-height: 30px;
+        font-weight: 400;
+    }
+
+    span {
+        color: #787e92;
+        font-size: 18px;
+        line-height: 30px;
+        font-weight: 400;
+    }
+
+    ._tieude {
+        margin-top: 60px;
+        color: #E7596D;
+        font-size: 40px;
+        line-height: 56px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    ._mota {
+        font-size: 20px;
+        line-height: 34px !important;
+        margin-bottom: 24px;
+    }
+</style>
+
+
+<div class="w3-services" style="margin-bottom: 80px; padding: 0;">
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <section class="w3l-content-6">
+            <div class="container py-lg-4 cauchuyen">
+                <h2 class="text-uppercase font-weight-bold _tieude">@Model.TieuDe</h2>
+                <h3 class="_mota" style="font-size:20px; line-height:20px">@Model.MoTa</h3>
+                @Html.Raw(Model.NoiDung)
+            </div>
+        </section>
+    </div>
+    <div class="container">
+        <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 32px; text-decoration: none; padding-right: 12px;">
+            <a href="~/blog" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #E7596D; text-decoration:none;">
+                Danh Sách Blog
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!--//services-sec-->
+<!-- Template JavaScript -->
+<script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
+<script src="~/Assets/Client/js/theme-change.js"></script>
+<!-- disable body scroll which navbar is in active -->
+<script>
+    $(function () {
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
+    });
+</script>
+<!-- disable body scroll which navbar is in active -->
+<!--/MENU-JS-->
+<script>
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    $(window).on("scroll", function () {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+</script>
+<style>
+    .w3l-about-breadcrumb{
+        background:url(@Model.UrlImage)!important;
+    }
+    .blog-content-title:hover {
+        color: #E7596D !important;
+    }
+
+    .blog-info {
+        background-color: rgb(220 220 220 / 20%);
+    }
+</style>

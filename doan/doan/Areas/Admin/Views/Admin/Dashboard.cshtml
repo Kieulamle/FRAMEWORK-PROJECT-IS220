@@ -1,0 +1,515 @@
+﻿
+@section breadcrumb {
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-0 ms-2">
+                <li class="breadcrumb-item">
+                    <!-- if breadcrumb is single-->
+                    <span>Home</span>
+                </li>
+                <li class="breadcrumb-item active"><span>Dashboard</span></li>
+            </ol>
+        </nav>
+    </div>
+}
+
+@{
+    ViewBag.Title = "Bloomsy";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var nds = ViewBag.nds;
+    var ndsQty = ViewBag.ndsQty;
+    var ctspsQty = ViewBag.ctspsQty;
+    var tongTienHD = ViewBag.tongTienHD;
+    var hdsQty = ViewBag.hdsQty;
+    var doanhThuOnline = ViewBag.doanhThuOnline;
+    var doanhThuTrucTiep = ViewBag.doanhThuTrucTiep;
+
+    //Doanh thu tháng
+    var doanhThuThang7 = ViewBag.doanhThuThang7;
+    var doanhThuThang8 = ViewBag.doanhThuThang8;
+    var doanhThuThang9 = ViewBag.doanhThuThang9;
+    var doanhThuThang10 = ViewBag.doanhThuThang10;
+    var doanhThuThang11 = ViewBag.doanhThuThang11;
+    var doanhThuThang12 = ViewBag.doanhThuThang12;
+
+
+}
+
+
+<div class="w3-services py-5" style="margin-bottom:40px;">
+    <div class="container">
+        <div class="row">
+            <h3 id="doanhThuThang7" style="margin:0; padding:0; display:none;">@doanhThuThang7</h3>
+            <h3 id="doanhThuThang8" style="margin:0; padding:0; display:none;">@doanhThuThang8</h3>
+            <h3 id="doanhThuThang9" style="margin:0; padding:0; display:none;">@doanhThuThang9</h3>
+            <h3 id="doanhThuThang10" style="margin:0; padding:0; display:none;">@doanhThuThang10</h3>
+            <h3 id="doanhThuThang11" style="margin:0; padding:0; display:none;">@doanhThuThang11</h3>
+            <h3 id="doanhThuThang12" style="margin:0; padding:0; display:none;">@doanhThuThang12</h3>
+            <div class="col-sm-6 col-lg-3">
+                <div class="card mb-4 text-white bg-primary">
+                    <div class="card-body pb-0 d-flex justify-content-between align-items-start">
+                        <div>
+
+                            <div class="fs-4 fw-semibold">
+                                @ndsQty <span class="fs-6 fw-normal">
+
+                                </span>
+                            </div>
+                            <div>Người Dùng</div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-transparent text-white p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg class="icon">
+                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-options"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
+                        <canvas class="chart" id="card-chart1" height="70"></canvas>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+            <div class="col-sm-6 col-lg-3">
+                <div class="card mb-4 text-white bg-info">
+                    <div class="card-body pb-0 d-flex justify-content-between align-items-start">
+                        <div>
+                            <div class="fs-4 fw-semibold">
+                                @ctspsQty <span class="fs-6 fw-normal">
+
+                                </span>
+                            </div>
+                            <div>Sản Phẩm</div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-transparent text-white p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg class="icon">
+                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-options"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
+                        <canvas class="chart" id="card-chart2" height="70"></canvas>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+            <div class="col-sm-6 col-lg-3">
+                <div class="card mb-4 text-white bg-warning">
+                    <div class="card-body pb-0 d-flex justify-content-between align-items-start">
+                        <div>
+                            <div>
+                                <div class="fs-4 fw-semibold">
+                                    @hdsQty
+                                </div>
+                                <div>Đơn Mua</div>
+                            </div>
+
+
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-transparent text-white p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg class="icon">
+                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-options"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="c-chart-wrapper mt-3" style="height:70px;">
+                        <canvas class="chart" id="card-chart3" height="70"></canvas>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.col-->
+            <div class="col-sm-6 col-lg-3">
+                <div class="card mb-4 text-white bg-danger">
+                    <div class="card-body pb-0 d-flex justify-content-between align-items-start">
+                        <div>
+                            @if (tongTienHD > 1000000)
+                            {
+                                tongTienHD = tongTienHD / 1000000;
+                                <div class="fs-4 fw-semibold">
+                                    @(tongTienHD)M
+                                </div>
+
+                            }
+                            else
+                            {
+                                tongTienHD = tongTienHD / 1000;
+                                <div class="fs-4 fw-semibold">
+                                    @(tongTienHD)K
+                                </div>
+                            }
+                            <div>Doanh Thu</div>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-transparent text-white p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg class="icon">
+                                    <use xlink:href="~/Assets/Admin/vendors/core-ui/icons/svg/free.svg#cil-options"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
+                        <canvas class="chart" id="card-chart4" height="70"></canvas>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-->
+        </div>
+        <!-- /.row-->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title mb-0">Biểu Đồ Doanh Thu</h4>
+                        <div class="small text-medium-emphasis">Tháng 7 - Tháng 12 2023</div>
+                    </div>
+                    <div class="btn-toolbar d-none d-md-block" role="toolbar" aria-label="Toolbar with buttons">
+                        <div class="btn-group btn-group-toggle mx-3" data-coreui-toggle="buttons">
+                            <input class="btn-check typeChart" id="line1" type="radio" onclick="handleClickSize(this);" name="typeChart" value="line">
+                            <label for="line1" id="line1Label" class="btn btn-outline-secondary"> Line </label>
+                            <input class="btn-check typeChart" id="bar1" type="radio" onclick="handleClickSize(this);" name="typeChart" value="bar" checked="checked">
+                            <label for="bar1" id="bar1Label" class="btn btn-outline-secondary active"> Bar </label>
+                            <input class="btn-check typeChart" id="pie1" type="radio" onclick="handleClickSize(this);" name="typeChart" value="pie" autocomplete="off">
+                            <label for="pie1" id="pie1Label" class="btn btn-outline-secondary"> Pie </label>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="myChart1 hide1">
+                    <canvas id="myChart1"></canvas>
+                </div>
+                <div class="myChart2">
+                    <canvas id="myChart2"></canvas>
+                </div>
+                <div class="myChart3 hide1" style="display:flex; justify-content: center; align-items: center; height: 700px;">
+                    <canvas id="myChart3"></canvas>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h4 class="card-title mb-0">Biểu Đồ Doanh Thu</h4>
+                        <div class="small text-medium-emphasis">Mua Hàng Online - Mua Hàng Trực Tiếp</div>
+                    </div>
+                    <div class="btn-toolbar d-none d-md-block" role="toolbar" aria-label="Toolbar with buttons">
+                        <div class="btn-group btn-group-toggle mx-3" data-coreui-toggle="buttons">
+                            <input class="btn-check typeChart2" id="bar2" type="radio" onclick="handleClickType(this);" name="typeChart2" value="bar">
+                            <label for="bar2" id="bar2Label" class="btn btn-outline-secondary"> Bar </label>
+                            <input class="btn-check typeChart2" id="pie2" type="radio" onclick="handleClickType(this);" name="typeChart2" value="pie" checked="checked">
+                            <label for="pie2" id="pie2Label" class="btn btn-outline-secondary active"> Pie </label>
+                            <input class="btn-check typeChart2" id="doughnut2" type="radio" onclick="handleClickType(this);" name="typeChart2" value="doughnut" autocomplete="off">
+                            <label for="doughnut2" id="doughnut2Label" class="btn btn-outline-secondary"> Doughnut </label>
+                        </div>
+                    </div>
+                </div>
+                <p style="margin: 0; padding: 0; display:none;" id="online">@doanhThuOnline</p>
+                <p style="margin: 0; padding: 0; display:none;" id="tructiep">@doanhThuTrucTiep</p>
+
+                <div class="chart1 c-chart-wrapper onlineTrucTiepChart hide1" style="display:flex; justify-content:center; align-items:center; height:500px;margin-top:40px;">
+                    <canvas id="onlineTrucTiepChart1"></canvas>
+                </div>
+
+                <div class="chart2 c-chart-wrapper onlineTrucTiepChart" style="display:flex; justify-content:center; align-items:center; height:500px;margin-top:40px;">
+                    <canvas id="onlineTrucTiepChart2"></canvas>
+                </div>
+
+                <div class="chart3 c-chart-wrapper onlineTrucTiepChart hide1" style="display:flex; justify-content:center; align-items:center; height:500px;margin-top:40px;">
+                    <canvas id="onlineTrucTiepChart3"></canvas>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- /.row-->
+
+
+
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+    //var typeValue = "bar";
+    function handleClickSize(myRadio) {
+        var line1Label = document.querySelector("#line1Label");
+        var bar1Label = document.querySelector("#bar1Label");
+        var pie1Label = document.querySelector("#pie1Label");
+        var myChart1 = document.querySelector(".myChart1");
+        var myChart2 = document.querySelector(".myChart2");
+        var myChart3 = document.querySelector(".myChart3");
+
+        console.log("Long")
+
+        typeValue = myRadio.value;
+        console.log(typeValue);
+        if (typeValue == "line") {
+            line1Label.classList.add("active");
+            bar1Label.classList.remove("active");
+            pie1Label.classList.remove("active");
+            myChart1.classList.remove("hide1");
+            myChart2.classList.add("hide1");
+            myChart3.classList.add("hide1");
+
+        }
+        if (typeValue == "bar") {
+            line1Label.classList.remove("active");
+            bar1Label.classList.add("active");
+            pie1Label.classList.remove("active");
+            myChart1.classList.add("hide1");
+            myChart2.classList.remove("hide1");
+            myChart3.classList.add("hide1");
+
+        }
+        if (typeValue == "pie") {
+            line1Label.classList.remove("active");
+            bar1Label.classList.remove("active");
+            pie1Label.classList.add("active");
+            myChart3.classList.remove("hide1");
+            myChart1.classList.add("hide1");
+            myChart2.classList.add("hide1");
+        }
+
+    }
+
+
+    var ctx = document.getElementById('myChart1');
+    var doanhThuThang7 = + document.getElementById('doanhThuThang7').textContent;
+    var doanhThuThang8 = + document.getElementById('doanhThuThang8').textContent;
+    var doanhThuThang9 = + document.getElementById('doanhThuThang9').textContent;
+    var doanhThuThang10 = + document.getElementById('doanhThuThang10').textContent;
+    var doanhThuThang11 = + document.getElementById('doanhThuThang11').textContent;
+    var doanhThuThang12 = + document.getElementById('doanhThuThang12').textContent;
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Tháng 7 ', 'Tháng 8', 'Tháng 9 ', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+            datasets: [{
+                label: 'Doanh Thu',
+
+                data: [doanhThuThang7, doanhThuThang8, doanhThuThang9, doanhThuThang10, doanhThuThang11, doanhThuThang12],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    var ctx = document.getElementById('myChart2');
+    var doanhThuThang7 = + document.getElementById('doanhThuThang7').textContent;
+    var doanhThuThang8 = + document.getElementById('doanhThuThang8').textContent;
+    var doanhThuThang9 = + document.getElementById('doanhThuThang9').textContent;
+    var doanhThuThang10 = + document.getElementById('doanhThuThang10').textContent;
+    var doanhThuThang11 = + document.getElementById('doanhThuThang11').textContent;
+    var doanhThuThang12 = + document.getElementById('doanhThuThang12').textContent;
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Tháng 7 ', 'Tháng 8', 'Tháng 9 ', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+            datasets: [{
+                label: 'Doanh Thu',
+
+                data: [doanhThuThang7, doanhThuThang8, doanhThuThang9, doanhThuThang10, doanhThuThang11, doanhThuThang12],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+
+
+    var ctx = document.getElementById('myChart3');
+    var doanhThuThang7 = + document.getElementById('doanhThuThang7').textContent;
+    var doanhThuThang8 = + document.getElementById('doanhThuThang8').textContent;
+    var doanhThuThang9 = + document.getElementById('doanhThuThang9').textContent;
+    var doanhThuThang10 = + document.getElementById('doanhThuThang10').textContent;
+    var doanhThuThang11 = + document.getElementById('doanhThuThang11').textContent;
+    var doanhThuThang12 = + document.getElementById('doanhThuThang12').textContent;
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Tháng 7 ', 'Tháng 8', 'Tháng 9 ', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+            datasets: [{
+                label: 'Doanh Thu',
+
+                data: [doanhThuThang7, doanhThuThang8, doanhThuThang9, doanhThuThang10, doanhThuThang11, doanhThuThang12],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+
+
+</script>
+
+<script>
+    function handleClickType(myRadio) {
+        var bar2Label = document.querySelector("#bar2Label");
+        var pie2Label = document.querySelector("#pie2Label");
+        var doughnut2Label = document.querySelector("#doughnut2Label");
+        var myChart1 = document.querySelector(".chart1");
+        var myChart2 = document.querySelector(".chart2");
+        var myChart3 = document.querySelector(".chart3");
+
+        console.log("Long")
+
+        typeValue = myRadio.value;
+        console.log(typeValue);
+        if (typeValue == "bar") {
+            bar2Label.classList.add("active");
+            pie2Label.classList.remove("active");
+            doughnut2Label.classList.remove("active");
+            myChart1.classList.remove("hide1");
+            myChart2.classList.add("hide1");
+            myChart3.classList.add("hide1");
+
+        }
+        if (typeValue == "pie") {
+            bar2Label.classList.remove("active");
+            pie2Label.classList.add("active");
+            doughnut2Label.classList.remove("active");
+            myChart1.classList.add("hide1");
+            myChart2.classList.remove("hide1");
+            myChart3.classList.add("hide1");
+
+        }
+        if (typeValue == "doughnut") {
+            bar2Label.classList.remove("active");
+            pie2Label.classList.remove("active");
+            doughnut2Label.classList.add("active");
+            myChart3.classList.remove("hide1");
+            myChart1.classList.add("hide1");
+            myChart2.classList.add("hide1");
+        }
+
+    }
+
+    var online = document.getElementById('online');
+    var tienOnline = online.textContent;
+    var tructiep = document.getElementById('tructiep');
+    var tienTrucTiep = tructiep.textContent;
+
+
+    var onlineTrucTiepChar1 = document.getElementById('onlineTrucTiepChart1');
+    new Chart(onlineTrucTiepChart1, {
+        type: 'bar',
+        data: {
+            labels: ['Mua Hàng Online', 'Mua Hàng Trực Tiếp'],
+            datasets: [{
+                label: 'Doanh Thu',
+
+                data: [tienOnline, tienTrucTiep],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    var online = document.getElementById('online');
+    var tienOnline = online.textContent;
+    var tructiep = document.getElementById('tructiep');
+    var tienTrucTiep = tructiep.textContent;
+
+
+    var onlineTrucTiepChart2 = document.getElementById('onlineTrucTiepChart2');
+    new Chart(onlineTrucTiepChart2, {
+        type: 'pie',
+        data: {
+            labels: ['Mua Hàng Online', 'Mua Hàng Trực Tiếp'],
+            datasets: [{
+                label: 'Doanh Thu',
+
+                data: [tienOnline, tienTrucTiep],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    var online = document.getElementById('online');
+    var tienOnline = online.textContent;
+    var tructiep = document.getElementById('tructiep');
+    var tienTrucTiep = tructiep.textContent;
+
+
+    var onlineTrucTiepChart3 = document.getElementById('onlineTrucTiepChart3');
+    new Chart(onlineTrucTiepChart3, {
+        type: 'doughnut',
+        data: {
+            labels: ['Mua Hàng Online', 'Mua Hàng Trực Tiếp'],
+            datasets: [{
+                label: 'Doanh Thu',
+
+                data: [tienOnline, tienTrucTiep],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+
+<style>
+    .hide1 {
+        display: none !important;
+    }
+
+    .show1 {
+        display: flex;
+    }
+</style>

@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "DanhSachBlog";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var blogs = ViewBag.blogs;
+}
+
+<!-- about breadcrumb -->
+<section class="w3l-about-breadcrumb position-relative text-center">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container py-lg-5 py-3">
+            <h2 class="title text-morii">Blog</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="Index">Trang Chủ</a></li>
+                <li class="active"><span class="fa fa-angle-double-right mx-2" aria-hidden="true"></span> Blog </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+
+<div class="w3-services py-5">
+    <div class="container py-lg-4">
+        <div class="title-content text-center mb-lg-5 mt-4">
+            <h3 class="hny-title text-morii">Bloomsy</h3>
+            <p class="fea-para" style="font-size:18px;">Gửi trái tim qua những bó hoa tươi</p>
+        </div>
+        <div class="row features4-grids text-left mt-lg-4">
+            @foreach (var item in blogs)
+            {
+                <a href="~/blog/details/@item.ID" style="cursor:pointer;">
+                    <div class="col-xl-4 col-md-6 mb-20" style="cursor:pointer;">
+                        <div class="blog-info">
+                            <a href="~/blog/details/@item.ID">
+                                <img class="img-fluid" src="@item.UrlImage" alt="@item.TieuDe" />
+                            </a>
+                            <div class="blog-content">
+                                <p class="date-post">@item.CreatedDate</p>
+                                <a href="~/blog/details/@item.ID">
+                                    <h3 class="blog-content-title">
+                                        @item.TieuDe
+                                    </h3>
+
+                                </a>
+                                <a href="~/blog/details/@item.ID" style="cursor:pointer;">
+                                    <p class="blog-content-detail">
+                                        @item.MoTa
+                                    </p>
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+</div>
+
+<!--//services-sec-->
+<!-- Template JavaScript -->
+<script src="~/Assets/Client/js/jquery-3.3.1.min.js"></script>
+<script src="~/Assets/Client/js/theme-change.js"></script>
+<!-- disable body scroll which navbar is in active -->
+<script>
+    $(function () {
+        $('.navbar-toggler').click(function () {
+            $('body').toggleClass('noscroll');
+        })
+    });
+</script>
+<!-- disable body scroll which navbar is in active -->
+<!--/MENU-JS-->
+<script>
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    $(window).on("scroll", function () {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 80) {
+            $("#site-header").addClass("nav-fixed");
+        } else {
+            $("#site-header").removeClass("nav-fixed");
+        }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+        $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+        if ($(window).width() > 991) {
+            $("header").removeClass("active");
+        }
+        $(window).on("resize", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+        });
+    });
+</script>
+<!--//MENU-JS-->
+
+
+<style>
+    .blog-content-title:hover {
+        color: #E7596D !important;
+    }
+
+    .blog-info {
+        background-color: rgb(220 220 220 / 20%);
+    }
+
+    .blog-item {
+        color: #E7596D !important;
+    }
+</style>

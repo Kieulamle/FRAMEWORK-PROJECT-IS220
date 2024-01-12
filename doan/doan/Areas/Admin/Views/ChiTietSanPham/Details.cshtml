@@ -1,0 +1,260 @@
+﻿@model Model.EF.ChiTietSanPham
+
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var ctsps = ViewBag.ctsps;
+}
+
+@section breadcrumb {
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb my-0 ms-2">
+                <li class="breadcrumb-item">
+                    <span>Sản Phẩm</span>
+                </li>
+                <li class="breadcrumb-item active"><span>Chi Tiết Sản Phẩm</span></li>
+            </ol>
+        </nav>
+    </div>
+}
+
+@*<link href="~/Assets/Client/css/style-starter.css" rel="stylesheet" />
+    <link href="~/Assets/Client/css/custom-profiledropdown.css" rel="stylesheet" />
+    <script src="~/Assets/Client/js/bootstrap.min.js"></script>*@
+
+<style>
+
+    .activeButton {
+        background-color: #E7596D !important;
+        color: #fff !important;
+    }
+
+    .product {
+        display: flex;
+        /*flex-direction:column;*/
+        gap: 30px;
+        padding-bottom: 20px;
+        /*border-bottom: 0.5px solid #ccc !important;*/
+    }
+
+    .imgProduct {
+        display: flex;
+    }
+
+    .contentProduct {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .moTaDiv {
+        margin: 20px 0;
+    }
+
+    .moTa {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 16px;
+    }
+
+    .moTaP {
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 20px;
+        line-height: 26px;
+        color: #787e92;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    hr.style10 {
+        border-top: 1px dotted #8c8b8b;
+        border-bottom: 1px dotted #fff;
+    }
+
+    .w3-services-grids {
+        align-items: initial;
+    }
+
+    .splienquan-h4 {
+        font-size: 20px !important;
+        margin: 10px 0 0 0 !important;
+        line-height: 27px !important;
+        font-weight: 500 !important;
+        color: #E7596D !important;
+    }
+
+    .splienquan-p {
+        font-size: 18px !important;
+        color: #787e92;
+    }
+
+    .wrapChonSize {
+    }
+
+    .titleChonSize {
+        margin: 30px 0 15px 0;
+        color: #000 !important;
+        font-size: 18px;
+    }
+
+    .listSize {
+        display: flex;
+    }
+
+    .size {
+        padding: 10px 15px;
+        background: #fff;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        color: #666666;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        margin: 0 15px 0 0;
+    }
+
+    .wrapChonTopping {
+    }
+
+    .titleChonTopping {
+        margin: 30px 0 15px 0;
+        color: #000 !important;
+        font-size: 18px;
+    }
+
+    .listTopping {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .topping {
+        padding: 10px 15px;
+        background: #fff;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        color: #666666;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        margin: 0 15px 15px 0;
+    }
+
+    .wrapThemGioHang {
+        display: flex;
+    }
+
+    .buttonThemGioHang {
+        width: 100%;
+        font-weight: 600;
+        padding: 12px;
+        margin: 30px 0 15px 0;
+        background-color: #E7596D;
+        color: #fff;
+        font-size: 20px;
+        line-height: 30px;
+        /* identical to box height */
+        cursor: pointer;
+        text-align: center;
+        border-radius: 20px;
+        border: none;
+    }
+</style>
+
+
+<div class="tab-content rounded-bottom" style=" margin-top: 20px; margin-bottom:80px;">
+    <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-907">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="container">
+                        <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom: 60px;">Chi Tiết Sản Phẩm</h3>
+                        @*<hr class="style-10" />*@
+                        <div class="product">
+                            <div class="imgProduct">
+                                <img src=@Model.UrlImage style="width: 500px; height: 500px; border-radius: 6px;" />
+                            </div>
+                            <div class="contentProduct">
+                                <h3 style="font-size: 30px; text-transform: uppercase; font-weight: 700; margin-bottom: 5px; text-transform: capitalize; color: #E7596D; ">
+                                    @Model.TenSanPham
+                                </h3>
+                                <p style="font-size: 24px; font-weight: 700; color:#787e92;">
+                                    @{
+                                        var t = @Model.Gia;
+                                        t = t / 1000;
+
+                                    }
+                                    @t.000 đ
+                                </p>
+                            </div>
+                        </div>
+                        <hr class="style10">
+                        <div class="moTaDiv">
+                            <h3 class="moTa">Mô Tả Sản Phẩm</h3>
+                            <p class="moTaP">@Model.MoTaSanPham</p>
+                        </div>
+
+                        <div class="moTaDiv">
+                            <hr class="style10">
+                            <h3 class="moTa">Sản Phẩm Liên Quan</h3>
+                        </div>
+
+
+                        <div class="row w3-services-grids">
+                            @{
+                                var i = 0;
+                                foreach (var sp in ctsps)
+                                {
+                                    if (sp.ID == Model.ID)
+                                    {
+                                        continue;
+                                    }
+                                    ++i;
+                                    <a href="~/admin/san-pham/details/@sp.ID" style="width:auto!important; padding:0!important">
+                                        <div class="col-lg-2 col-md-3 causes-grid">
+                                            <div>
+                                                <a href="~/admin/san-pham/details/@sp.ID"><img src=@sp.UrlImage alt="@sp.TenSanPham" style="border-radius:6px; height:120px; width:180px;"></a>
+                                                <a href="~/admin/san-pham/details/@sp.ID" class="cause-title-wrap" style="text-decoration:none">
+                                                    <h4 class="cause-title splienquan-h4 text-morii">
+                                                        @sp.TenSanPham
+                                                    </h4>
+                                                </a>
+                                                <p class="card-text mb-0 splienquan-p" style="font-size: 20px">
+                                                    @{
+                                                        var b = sp.Gia;
+                                                        b = b / 1000;
+
+                                                    }
+                                                    @b.000 đ
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </a>
+                                    if (i == 6)
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
+                        </div>
+                        <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 32px; text-decoration: none; padding-right: 12px;">
+                            <a href="~/admin/san-pham" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #E7596D; text-decoration:none;">
+                                Danh Sách Sản Phẩm
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+

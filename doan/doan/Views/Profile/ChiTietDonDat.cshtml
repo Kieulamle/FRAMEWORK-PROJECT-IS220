@@ -1,0 +1,737 @@
+﻿
+@{
+    ViewBag.Title = "Bloomsy";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var hd = ViewBag.hd;
+    var dh = ViewBag.dh;
+    var listCTHD = ViewBag.listCTHD;
+    var listCTSP = ViewBag.listCTSP;
+    var km = ViewBag.km;
+    var isKM = ViewBag.isKM;
+    long e = 0;
+}
+
+@model Model.EF.NguoiDung
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+<!-- about breadcrumb -->
+<section class="w3l-about-breadcrumb position-relative text-center">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container py-lg-5 py-3">
+            <h2 class="title text-morii">Tài Khoản Của Tôi</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="Index">Đơn Đặt</a></li>
+                <li class="active"><span class="fa fa-angle-double-right mx-2" aria-hidden="true"></span>Chi Tiết Đơn Đặt</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+
+
+<div class="w3-services py-5">
+    <div class="container" style="padding:24px 0;">
+        <div class="form-horizontal">
+            <div class="row" style="margin-bottom:60px;">
+                <div class="col-sm-12">
+                    <h3 style="font-weight: 700; font-size: 40px; line-height: 49px; margin-bottom:20px; color:#E7596D;">Chi Tiết Đơn Đặt</h3>
+                </div>
+                <div class="col-sm-8">
+                    <div>
+                        <div class="row wrap-deltail-order">
+                            <div class="col-sm-5" style="padding: 0;">
+                                <p class="pDonDat" style="margin-bottom: 12px;">
+                                    Đơn Đặt: &nbsp;
+                                    <span style="font-weight: 600;">
+                                        #@dh.ID
+                                    </span>
+                                </p>
+                                <p class="pDonDat" style="margin-bottom: 12px;">
+                                    Ngày Mua: &nbsp;
+                                    <span style="font-weight: 600;">
+                                        @hd.CreatedDate
+                                    </span>
+                                </p>
+                                <p class="pDonDat" style="margin-bottom: 12px;">
+                                    Thanh Toán: &nbsp;
+                                    <span style="font-weight: 600;">
+                                        @dh.PTTT
+                                    </span>
+                                </p>
+                                @if (dh.TTDH == "Đã Giao")
+                                {
+                                    <a>
+                                        <button class="finishedButton">
+                                            @dh.TTDH
+                                        </button>
+                                    </a>
+                                }
+                                else if (dh.TTDH == "Chờ Xác Nhận")
+                                {
+                                    <a>
+                                        <button class="finishedButton" style="background-color: #1976D2;">
+                                            @dh.TTDH
+                                        </button>
+                                    </a>
+                                }
+                                else if (dh.TTDH == "Đang Giao")
+                                {
+                                    <a>
+                                        <button class="finishedButton" style="background-color: #FFC107;">
+                                            @dh.TTDH
+                                        </button>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a>
+                                        <button class="finishedButton" style="background-color: #FF0000;">
+                                            @dh.TTDH
+                                        </button>
+                                    </a>
+                                }
+
+
+
+                            </div>
+                            <div class="col-sm-7" style="padding: 0;">
+                                <p class="pDonDat" style="margin-bottom: 12px;">
+                                    Họ Tên: &nbsp;
+                                    <span style="font-weight: 600;">
+                                        @dh.HoTen
+                                    </span>
+                                </p>
+                                <p class="pDonDat" style="margin-bottom: 12px;">
+                                    SĐT: &nbsp;
+                                    <span style="font-weight: 600;">
+                                        @dh.SDT
+                                    </span>
+                                </p>
+                                <p class="pDonDat" style="margin-bottom: 12px;">
+                                    Địa Chỉ: &nbsp;
+                                    <span style="font-weight: 600;">
+                                        @dh.DiaChiNhanHang
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <hr class="style-10" />
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Sản Phẩm</th>
+                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Lượng</th>
+                                    <th scope="col" style="text-align: center; font-weight: 700; font-size: 15px; line-height: 18px; color: #ABABAB;">Số Tiền</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in listCTHD)
+                                {
+
+                                    var sp = listCTSP[0];
+                                    //Get Ra Chi tiết sản phẩm ứng với các sản phẩm trong chi tiết đơn hàng
+                                    foreach (var it in listCTSP)
+                                    {
+                                        if (it.ID == item.MaSP)
+                                        {
+                                            sp = it;
+                                            break;
+                                        }
+                                    }
+                                    <tr>
+                                        <th scope="row" style="display: flex; padding: 0; margin:30px 0 0 0;">
+                                            <div class="img-product-wrap">
+                                                <img class="img-product" src="@sp.UrlImage" />
+                                            </div>
+                                            <div class="product-details">
+                                                <div>
+                                                    <h3 class="product-title">
+                                                        @sp.TenSanPham
+                                                    </h3>
+                                                    <p class="product-note" style="margin-bottom: 0">
+                                                        Size: @item.Size
+                                                    </p>
+                                                    <p class="product-note">
+                                                        @item.Topping
+                                                    </p>
+
+                                                </div>
+                                                <p class="product-price">
+                                                    @{
+                                                        var a = item.Gia;
+                                                        a = a / 1000;
+                                                    }
+                                                    @a.000 đ
+                                                </p>
+                                            </div>
+                                        </th>
+                                        <td>
+                                            <div style="display:flex; flex-direction:row; justify-content:center; align-items:center;">
+                                                <p class="pDonDat">@item.SoLuong</p>
+                                            </div>
+
+                                        </td>
+                                        <td style="padding-right: 30px;">
+                                            <p class="total-price">
+                                                @{
+                                                    var b = item.ThanhTien;
+                                                    b = b / 1000;
+                                                }
+                                                @b.000 đ
+
+                                            </p>
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+                <div class="col-sm-4">
+                    <div id="wrap-order-summary">
+                        <h3 class="order-summary-title" style="color: #E7596D;">@dh.TTDH</h3>
+                        <hr class="style-10" />
+                        <div style="margin-bottom: 100px;">
+                            <div class="wrap-sub-total">
+                                <p class="sub-total">TỔNG TIỀN HÀNG</p>
+                                <p class="sub-total" style="font-weight:600;">
+                                    @{
+                                        var c = hd.TongTien + hd.TienKM - 30000;
+                                        c = c / 1000;
+                                    }
+                                    @c.000 đ
+                                </p>
+                            </div>
+                            <div class="wrap-giamgia">
+                                @if (isKM == true)
+                                {
+                                    <div style="display:flex; flex-direction:column;">
+                                        <p class="sub-total">GIẢM GIÁ</p>
+                                        <p class="sub-total">(@km.TenKM)</p>
+                                    </div>
+                                    <p class="sub-total" style="font-weight:600;">
+                                        @{
+                                            var f = hd.TienKM;
+                                            f = f / 1000;
+                                        }
+                                        @f.000 đ
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p class="sub-total">GIẢM GIÁ</p>
+                                    <p class="sub-total" style="font-weight:600;">__</p>
+                                }
+                            </div>
+                            <div class="wrap-phivanchuyen">
+                                <p class="sub-total">PHÍ VẬN CHUYỂN</p>
+                                <p class="sub-total" style="font-weight:600;">30.000 đ</p>
+                            </div>
+                        </div>
+
+                        <hr class="style-10" />
+                        <div>
+                            <div class="wrap-estimated-total">
+                                <p class="sub-total">TỔNG SỐ TIỀN </p>
+                                <p class="sub-total" style="color:#E7596D; font-weight: 600;">
+                                    @{
+                                        var d = hd.TongTien;
+                                        d = d / 1000;
+                                    }
+                                    @d.000 đ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (dh.TTDH == "Chờ Xác Nhận")
+                    {
+                        <div style="display: flex; justify-content:space-between; align-items: center; margin-top: 32px;">
+
+                            <p class="huyDonHangButton" data-id="@dh.ID" id="huyDonHangButton_@dh.ID" data-toggle="modal" data-target="#exampleModal" style=" font-weight: 500; font-size: 16px; line-height: 20px; color: #E7596D; cursor:pointer;">
+                                Hủy Đơn Hàng
+                            </p>
+                            <a href="~/profile/don-dat" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #E7596D;">
+                                Lịch Sử Đơn Đặt
+                            </a>
+                        </div>
+
+                    }
+
+                    else if (dh.TTDH == "Đang Giao")
+                    {
+                        <div style="display: flex; justify-content:space-between; align-items: center; margin-top: 32px;">
+
+                            <p class="daNhanHangButton" data-id="@dh.ID" id="daNhanHangButton_@dh.ID" data-toggle="modal" data-target="#exampleModal" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #E7596D; cursor:pointer;">
+                                Đã Nhận Hàng
+                            </p>
+                            <a href="~/profile/don-dat" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #E7596D;">
+                                Lịch Sử Đơn Đặt
+                            </a>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <div style="display: flex; justify-content:flex-end; align-items: center; margin-top: 32px;">
+
+                            <a href="~/profile/don-dat" style="font-weight: 500; font-size: 16px; line-height: 20px; color: #E7596D;">
+                                Lịch Sử Đơn Đặt
+                            </a>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade huyDonHangModal" id="exampleModal_@dh.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Xác Nhận Hủy Đơn Hàng
+                    <strong>
+                        #@dh.ID
+                    </strong>
+                </h5>
+            </div>
+            <div class="modal-body">
+                Đơn Hàng Của Bạn Sẽ Được Hủy Ngay Lập Tức. Bạn Có Muốn Hủy Đơn Hàng Này?
+            </div>
+            <div class="modal-footer">
+                <button id="closeButton_@dh.ID" data-id="@dh.ID" class="closeButton btn btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                <button class="btn btn-primary xacNhanHuyButton" data-id="@dh.ID" id="xacNhanHuyButton_@dh.ID">Xác Nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade daNhanHangModal" id="daNhanHang_@dh.ID" tabindex="-1" role="dialog" aria-labelledby="daNhanHangLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="daNhanHangLabel">
+                    Xác Nhận Đã Nhận Hàng
+                    <strong>
+                        #@dh.ID
+                    </strong>
+                </h5>
+            </div>
+            <div class="modal-body">
+                Đơn Hàng Của Bạn Sẽ Chuyển Sang Trạng Thái Đã Giao Ngay Lập Tức. Bạn Có Muốn Xác Nhận Đã Nhận Hàng Không?
+            </div>
+            <div class="modal-footer">
+                <button id="closeButtonNhanHang_@dh.ID" data-id="@dh.ID" class="closeButtonNhanHang btn btn-secondary" style="background-color:#ABABAB; outline:none;" data-dismiss="modal">Đóng</button>
+                <button class="btn btn-primary xacNhanDaGiaoButton" data-id="@dh.ID" id="xacNhanDaGiaoButton_@dh.ID">
+                    Xác Nhận
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<style>
+    .modal-body {
+        color: #000;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 26px;
+    }
+
+    .modal-open {
+        padding-right: 0 !important;
+    }
+
+    #site-header {
+        padding-right: 0 !important;
+    }
+
+    .huyDonHang {
+        font-size: 14px;
+        color: #FF0000;
+        line-height: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .daNhanHang {
+        font-size: 14px;
+        color: #009D34;
+        line-height: 20px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+        .daNhanHang:hover {
+            opacity: 0.5;
+        }
+
+    .huyDonHang:hover {
+        opacity: 0.5;
+    }
+
+    .finishedButton {
+        background-color: #E7596D;
+        border-radius: 3px;
+        padding: 4px 30px;
+        border: none;
+        outline: none;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        color: #FFFFFF;
+    }
+
+    .wrap-deltail-order {
+        margin: 0 0 36px 0;
+        padding: 14px 22px;
+        border: 1px solid #CFCFCF;
+        border-radius: 10px;
+    }
+
+    .pDonDat {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        color: #000000;
+    }
+
+    #wrap-order-summary {
+        padding: 24px;
+    }
+
+    .activeColor {
+        color: #009D34 !important;
+    }
+
+
+    .cancelledColor {
+        color: #FF0000 !important;
+    }
+
+    .inProgressColor {
+        color: #FFC107 !important;
+    }
+
+    .order-summary-title {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 29px;
+        margin-bottom: 14px;
+    }
+
+    .wrap-sub-total {
+        display: flex;
+        margin-top: 20px;
+        justify-content: space-between;
+        margin-bottom: 48px;
+    }
+
+    .wrap-sub-total {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .wrap-giamgia {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .wrap-phivanchuyen {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .wrap-estimated-total {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 48px;
+    }
+
+    .sub-total {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 20px;
+        color: #000;
+    }
+
+    .button-checkout {
+        margin-top: 36px;
+        border: none;
+        background-color: #E7596D;
+        border-radius: 15px;
+        padding: 16px;
+        width: 100%;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #FFFFFF;
+    }
+
+    #wrap-order-summary {
+        background-color: #F5F5F6;
+        border-radius: 15px;
+    }
+
+    .img-product {
+        width: 100px;
+        height: 100px;
+        border-radius: 15px;
+        margin-right: 20px;
+    }
+
+    .product-details {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .product-title {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 26px;
+    }
+
+    .product-note {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 16px;
+    }
+
+    .product-price {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: #E7596D;
+    }
+
+    .quantity-product {
+        width: 50px;
+        height: 33px;
+        border: 2px solid #CFCFCF;
+        text-align: center;
+        margin: 0 13px;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .button-quantity {
+        background-color: transparent;
+        border: none;
+        font-weight: 400;
+        font-size: 36px;
+        line-height: 36px;
+        outline: none !important;
+    }
+
+    .total-price {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        color: #E7596D;
+    }
+
+    .img-header-avt:hover {
+        cursor: pointer
+    }
+
+    .form-check-label {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+
+    .form-check-input {
+        padding: 7px;
+        width: 100%;
+        height: 2em;
+    }
+
+    button, input, select, label, li {
+        -webkit-appearance: button;
+    }
+
+    .form-group {
+        margin: 30px 0 30px 0;
+    }
+
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .profile-header-left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .img-header {
+        margin-right: 50px;
+    }
+
+    .button-profile-save {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .button-profile-save > button {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            background-color: #E7596D;
+            padding: 14px;
+            text-align: center;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+        }
+
+
+
+    hr.style10 {
+        border-top: 0.5px dotted #E5E5E5;
+        border-bottom: 1px dotted #fff;
+    }
+
+    .show {
+        visibility: visible;
+    }
+</style>
+
+
+<script>
+    $(document).ready(function () {
+        $('.optionsSelect').click(function (e) {
+            var idToggle = $(this).data("id");
+            var isHasClass = $("#Toggle_" + idToggle).hasClass("show");
+            e.preventDefault();
+            e.stopPropagation();
+            $(".toggle-options-select").removeClass("show");
+            if (isHasClass == false) {
+                $("#Toggle_" + idToggle).addClass("show");
+            } else {
+                $("#Toggle_" + idToggle).removeClass("show");
+            }
+
+        })
+        $(window).click(function () {
+            $(".toggle-options-select").removeClass("show");
+        })
+
+        $('.xemChiTiet').click(function () {
+            var idXemChiTiet = $(this).data("id");
+            window.location.replace("https://localhost:44372/profile/chi-tiet-don-dat/" + idXemChiTiet);
+        })
+
+
+        //Handle xác nhận mở modal hủy đơn hàng
+        $('.huyDonHangButton').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#exampleModal_' + idHuy).modal('show')
+        })
+
+
+        //Handle đóng modal xác nhận Hủy đơn hàng
+        $('.closeButton').click(function (e) {
+            var idClose = $(this).data("id");
+            console.log("Hủy", idClose);
+            $('#exampleModal_' + idClose).modal('hide')
+        })
+
+
+        //Handle mở modal xác nhận Đã nhận hàng
+        $('.daNhanHangButton').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#daNhanHang_' + idHuy).modal('show')
+        })
+
+        //Handle đóng modal xác nhận đã nhận hàng
+        $('.closeButtonNhanHang').click(function (e) {
+            var idHuy = $(this).data("id");
+            console.log(idHuy);
+            $('#daNhanHang_' + idHuy).modal('hide')
+        })
+
+        //Handle Xác nhận Hủy đơn hàng
+        $(".xacNhanHuyButton").click(function (e) {
+            var id = $(this).data("id");
+            console.log("idXacNhan", id);
+            $.ajax({
+                type: "POST",
+                url: "/Profile/HuyDonHangJson",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function (res) {
+                    window.location.replace("https://localhost:44372/profile/chi-tiet-don-dat/" + res.id);
+                    console.log("res", res.id, "isValid", res.isValid);
+                },
+                error: function (err) {
+                    console.log("err --> ", err);
+                    console.log("err ->>", err.err);
+                },
+            });
+        })
+
+        //Handle Xác nhận chuyển trạng thái đơn hàng sang đã giao
+        $(".xacNhanDaGiaoButton").click(function (e) {
+            var id = $(this).data("id");
+            console.log("idXacNhanDaGiao", id);
+            $.ajax({
+                type: "POST",
+                url: "/Profile/DaNhanHangJson",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                success: function (res) {
+                    window.location.replace("https://localhost:44372/profile/chi-tiet-don-dat/" + res.id);
+                    console.log("res", res.id, "isValid", res.isValid);
+                },
+                error: function (err) {
+                    console.log("err --> ", err);
+                    console.log("err ->>", err.err);
+                },
+            });
+        })
+
+
+
+    });
+</script>

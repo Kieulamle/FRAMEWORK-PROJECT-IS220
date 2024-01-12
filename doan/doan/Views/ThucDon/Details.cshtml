@@ -1,0 +1,326 @@
+﻿
+@model Model.EF.ChiTietSanPham
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    var ctsps = ViewBag.ctsps;
+    var listTopping = ViewBag.listTopping;
+}
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- about breadcrumb -->
+<section class="w3l-about-breadcrumb position-relative text-center">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container py-lg-5 py-3">
+            <h2 class="title text-morii">Sản Phẩm</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="Index">Trang Chủ</a></li>
+                <li class="active"><span class="fa fa-angle-double-right mx-2" aria-hidden="true"></span> Sản Phẩm </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+
+
+
+<div class="w3-services py-5">
+    <div class="container py-lg-4">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="container">
+                    <div class="product">
+                        <div class="imgProduct">
+                            <img src=@Model.UrlImage style="width:500px; height: 500px;" />
+                        </div>
+                        <div class="contentProduct">
+                            <h3 style="font-size: 30px; text-transform: uppercase; font-weight: 700; margin-bottom: 5px; text-transform: capitalize; color: #E7596D; ">
+                                @Model.TenSanPham
+                            </h3>
+                            <p id="giaSanPham" data-id="@Model.ID" data-gia="@Model.Gia" style="font-size: 24px; font-weight: 700;">
+                                @{
+                                    var t = @Model.Gia;
+                                    t = t / 1000;
+                                }
+                                @t.000 đ
+                            </p>
+
+                            <div class="wrapThemGioHang">
+                                @*<a href="/them-gio-hang?productID=@Model.ID&quantity=1" style="width:100%">*@
+                                <div class="buttonThemGioHang">
+                                    Thêm Vào Giỏ Hàng
+                                </div>
+                                @*</a>*@
+                            </div>
+                        </div>
+                        <style>
+                        </style>
+
+                    </div>
+                    <hr class="style10">
+                    <div class="moTaDiv">
+                        <h3 class="moTa">Mô tả sản phẩm</h3>
+                        <p class="moTaP">@Model.MoTaSanPham</p>
+
+                    </div>
+                    <div class="moTaDiv">
+                        <hr class="style10">
+                        <h3 class="moTa">Sản phẩm liên quan</h3>
+                    </div>
+
+
+                    <div class="row w3-services-grids">
+                        @{
+                            var c = 0;
+                            foreach (var sp in ctsps)
+                            {
+                                c++;
+                                if (sp.ID == Model.ID)
+                                {
+                                    continue;
+                                }
+                                <a href="~/thuc-don/details/@sp.ID">
+
+                                    <div class="col-lg-2 col-md-3 causes-grid">
+                                        <div>
+                                            <a href="~/thuc-don/details/@sp.ID"><img src=@sp.UrlImage alt="@sp.TenSanPham" height="120"></a>
+                                            <a href="~/thuc-don/details/@sp.ID" class="cause-title-wrap">
+                                                <h4 class="cause-title splienquan-h4 text-morii">
+                                                    @sp.TenSanPham
+                                                </h4>
+                                            </a>
+                                            <p class="card-text mb-0 splienquan-p" style="font-size: 20px">
+                                                @{
+                                                    var b = sp.Gia;
+                                                    b = b / 1000;
+                                                }
+                                                @b.000 đ
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </a>
+                                if (c > 6)
+                                {
+                                    break;
+                                }
+                            }
+
+
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<style>
+
+    .thuc-don-item {
+        color: #E7596D !important;
+    }
+
+    .activeButton {
+        background-color: #E7596D !important;
+        color: #fff !important;
+    }
+
+    .product {
+        display: flex;
+        /*flex-direction:column;*/
+        gap: 30px;
+        padding-bottom: 20px;
+        /*border-bottom: 0.5px solid #ccc !important;*/
+    }
+
+    .imgProduct {
+        display: flex;
+    }
+
+    .contentProduct {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .moTaDiv {
+        margin: 20px 0;
+    }
+
+    .moTa {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 16px;
+    }
+
+    .moTaP {
+        font-size: 18px;
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+
+    hr.style10 {
+        border-top: 1px dotted #8c8b8b;
+        border-bottom: 1px dotted #fff;
+    }
+
+    .w3-services-grids {
+        align-items: initial;
+    }
+
+    .splienquan-h4 {
+        font-size: 20px !important;
+        margin: 10px 0 0 0 !important;
+        line-height: 27px !important;
+        font-weight: 500 !important;
+        color: #E7596D !important;
+    }
+
+    .splienquan-p {
+        font-size: 18px !important;
+    }
+
+    .wrapChonSize {
+    }
+
+    .titleChonSize {
+        margin: 30px 0 15px 0;
+        color: #000 !important;
+        font-size: 18px;
+    }
+
+    .listSize {
+        display: flex;
+    }
+
+    .size {
+        padding: 10px 15px;
+        background: #fff;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        color: #666666;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        margin: 0 15px 0 0;
+    }
+
+    .wrapChonTopping {
+    }
+
+    .titleChonTopping {
+        margin: 30px 0 15px 0;
+        color: #000 !important;
+        font-size: 18px;
+    }
+
+    .listTopping {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .topping {
+        padding: 10px 15px;
+        background: #fff;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        color: #666666;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        margin: 0 15px 15px 0;
+    }
+
+    .wrapThemGioHang {
+        display: flex;
+    }
+
+    .buttonThemGioHang {
+        width: 100%;
+        font-weight: 600;
+        padding: 12px;
+        margin: 30px 0 15px 0;
+        background-color: #E7596D;
+        color: #fff;
+        font-size: 20px;
+        line-height: 30px;
+        /* identical to box height */
+        cursor: pointer;
+        text-align: center;
+        border-radius: 20px;
+        border: none;
+    }
+</style>
+
+
+
+<script>
+    function updatePrice() {
+        var giaSanPham = document.querySelector("#giaSanPham");
+        var giaSP = +giaSanPham.getAttribute('data-gia');
+        var idSP = +giaSanPham.getAttribute('data-id');
+        var resJson = {
+            idSp: idSP,
+            giaSP: giaSP,
+        }
+        //Set text
+        giaSP = giaSP / 1000;
+        var textGiaSP = giaSP + '.000 đ';
+        giaSanPham.innerHTML = textGiaSP;
+        return resJson;
+    }
+
+    $(document).ready(function () {
+        $(".buttonThemGioHang").on('click',
+            function handleClickThemVaoGioHang(e) {
+                e.preventDefault();
+                var resJson = updatePrice();
+                console.log('RESJSON', resJson);
+                console.log('id:', resJson.idSp);
+                console.log('giaSP:', resJson.giaSP);
+                var id = + resJson.idSp;
+                var gia = resJson.giaSP;
+                console.log("ID", id);
+                console.log("gia", gia);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/GioHang/ThemGioHangJson",
+                    data: {
+                        id: id,
+                        gia: gia
+                    },
+                    dataType: "json",
+                    success: function (res) {
+                        console.log("NguyenHuuLong --> ", res.msg);
+                        console.log("NguyenHuuLong --> err", res.err);
+                        console.log(res.id, res.gia);
+
+                        window.location.replace("https://localhost:44372/gio-hang");
+                    },
+                    error: function (err) {
+                        console.log("err --> ", err);
+                        console.log("err ->>", err.err);
+                    },
+                });
+            }
+        )
+
+    });
+
+
+
+</script>
+
